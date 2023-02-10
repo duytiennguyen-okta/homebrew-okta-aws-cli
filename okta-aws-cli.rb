@@ -5,12 +5,15 @@ class OktaAwsCli < Formula
   sha256 "06374f0eb3e371a8ef1a5e8fb2bcd0e5bfcac607aa2083f6c1101b54713a47bf"
   license "Apache-2.0"
 
-  depends_on "go" => :build
+  depends_on "go"
   def install
     system "go", "build", "-o", bin/"okta-aws-cli", "cmd/okta-aws-cli/main.go"
   end
 
   test do
+    str_help = shell_output("#{bin}/golangci-lint --help")
+    assert_match "Usage::", str_help
+    assert_match "Flags:", str_help
     # `test do` will create, run in and delete a temporary directory.
     #
     # This test will fail and we won't accept that! For Homebrew/homebrew-core
@@ -20,6 +23,6 @@ class OktaAwsCli < Formula
     #
     # The installed folder is not in the path, so use the entire path to any
     # executables being tested: `system "#{bin}/program", "do", "something"`.
-    system "false"
+    # system "false"
   end
 end
