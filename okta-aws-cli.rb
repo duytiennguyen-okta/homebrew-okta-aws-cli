@@ -12,6 +12,6 @@ class OktaAwsCli < Formula
 
   test do
     str_error = shell_output("#{bin}/okta-aws-cli -w """)
-    assert_match "Okta Org Domain value is not set", str_error
+    assert_match "DOkta Org Domain value is not set", str_error
   end
 end
