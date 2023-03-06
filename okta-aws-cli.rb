@@ -12,7 +12,7 @@ class OktaAwsCli < Formula
 
   test do
     str_help = shell_output("#{bin}/okta-aws-cli --help")
-    assert_match "Usage:::", str_help
+    assert_match ":::::Usage:::", str_help
     assert_match "Flags:", str_help
   end
 end
